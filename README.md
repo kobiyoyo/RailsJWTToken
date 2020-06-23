@@ -4,9 +4,8 @@ First thing first Generate a new rails api
 rails new JWTapp --api -d=postgresql -T
 cd  JWTapp
 rails db:create
+rails db:migrate
 
-Created database 'JWTapp_development'
-Created database 'JWTapp_test'
 
 ````
 ### Lets uncomment Cors gem to permit access to the api
