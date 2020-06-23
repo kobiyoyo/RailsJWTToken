@@ -7,7 +7,6 @@ rails new JWTapp --api -d=postgresql
 ````ruby 
 gem 'rack-cors'
 bundle install
-end
 ````
 ### Uncomment this lines below in cors.rb
 ````ruby 
