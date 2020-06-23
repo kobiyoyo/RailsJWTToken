@@ -89,9 +89,9 @@ config.token_lifetime = 1.day
 ````ruby 
 rails generate knock:token_controller user
 ````
-This generates a controller called user_token_controller. It inherits from Knock::AuthTokenController which comes with a create action that will create a JWT when logged in. The generator also inserts a route in the routes.rb file: post 'user_token' => 'user_token#create' as an API endpoint for login.
+This generates a controller called user_token_controller. It inherits from Knock::AuthTokenController which comes with a create action that will create a JWT when logged in. The generator also inserts a post 'user_token' => 'user_token#create' route in  the routes.rb file as an API endpoint for signin.
 
-Note:user_token_controller.rb is meant for signin and its different from user_controller.rb
+Note:user_token_controller.rb is meant for signin and its different from user_controller.rb.
 ### Now lets include Knock::Authenticable module in your ApplicationController 
 ````ruby 
 # app/controllers/application_controller.rb 
@@ -99,7 +99,7 @@ class ApplicationController < ActionController::API
   include Knock::Authenticable
 end
 ````
-poooo u almost there friend,Add an authenticate_user before filter to any controller to be authenticated,here am going to first add it to users_controller in order to enable users signup.
+poooo you almost there friend,Add an authenticate_user before filter to any controller to be authenticated,here am going to first add it to users_controller in order to enable users signup.
 ````ruby 
 # app/controllers/user_controller.rb 
 before_action :authenticate_user,except: [:create]
