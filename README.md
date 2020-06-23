@@ -92,6 +92,14 @@ rails generate knock:token_controller user
 This generates a controller called user_token_controller. It inherits from Knock::AuthTokenController which comes with a create action that will create a JWT when logged in. The generator also inserts a post 'user_token' => 'user_token#create' route in  the routes.rb file as an API endpoint for signin.
 
 Note:user_token_controller.rb is meant for signin and its different from user_controller.rb.
+````ruby 
+# app/controllers/user_token_controller.rb
+class UserTokenController < Knock::AuthTokenController
+end
+
+````
+
+
 ### Now lets include Knock::Authenticable module in your ApplicationController 
 ````ruby 
 # app/controllers/application_controller.rb 
