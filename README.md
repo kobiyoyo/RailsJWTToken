@@ -2,6 +2,7 @@
 First thing first Generate a new rails api
 ````ruby 
 rails new JWTapp --api -d=postgresql
+cd  JWTapp
 ````
 ### Add cors to permit access to the api
 ````ruby 
