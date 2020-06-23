@@ -62,18 +62,24 @@ User.create(username: "Danny", email: "dan@ymail.com", password: "enemona", pass
 ````
 ### Now lets configure the knock Gem
 ````ruby 
-rails generate knock:install
+rails g knock:install
 ````
 This will create an initializer file at config/initializers/knock.rb that contains the default configuration. 
 
-Note:you might get an error like this `Could not load generator "generators/knock/install_generator"` this caused by zeitwerk that is rails 6 autoloader.we can circumnavigate this error by switching the autoloader.
+Note:You might get an error like this `Could not load generator "generators/knock/install_generator"` this caused by zeitwerk that is rails 6 autoloader.we can circumnavigate this error by switching the autoloader.
 Read more about zeitwerk [here](https://medium.com/cedarcode/understanding-zeitwerk-in-rails-6-f168a9f09a1f) 
+Now we are going to degenerate the knock and generate it once more once we have included the line below into application.rb
+````ruby 
+rails d knock:install
+````
 ### Lets include this in  application.rb file
 ````ruby 
 # config/application.rb 
 config.load_defaults 6.0 and config.autoloader = :classic
 ````
-
+````ruby 
+rails g knock:install
+````
 By default knock token is set to expire in 24 hours, we can adjust it if we uncomment the line below ,and adjust it however we want 
 ````ruby 
 # config/initializers/knock.rb 
