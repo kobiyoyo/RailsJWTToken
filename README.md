@@ -124,3 +124,4 @@ Run the server,may the odds be with you lad.
 rails s
 ````
 
+Note:`auth` is  an object containing the the log in form field names and values.
