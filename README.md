@@ -48,7 +48,6 @@ def user_params
   params.permit(:username, :email, :password, :password_confirmation)
 end
 
-rails db:migrate
 ````
 ### Lets create a user
 ````ruby
