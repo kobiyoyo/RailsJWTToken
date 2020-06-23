@@ -53,7 +53,7 @@ rails db:migrate
 ### Lets create a user
 ````ruby
 rails c
-User.create(username: "Daniel Adama", email: "dan@ymail.com", password: "enemona", password_confirmation: "enemona")
+User.create(username: "Danny", email: "dan@ymail.com", password: "enemona", password_confirmation: "enemona")
 ````
 ### Now lets configure the knock Gem
 ````ruby 
