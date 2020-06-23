@@ -113,9 +113,9 @@ This time let's add an "auth/" scope to all of our api routes. That will add "au
 ````ruby 
 
 # config/routes.rb 
-scope '/auth/' do
-  post 'signin', to: 'user_token#create'
-  post 'signup', to: 'user#create'
+scope '/auth' do
+  post '/signin', to: 'user_token#create'
+  post '/signup', to: 'user#create'
 end
 ````
 ### Now lets test the api using post man
