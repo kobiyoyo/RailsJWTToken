@@ -117,7 +117,7 @@ scope '/auth' do
   post '/signup', to: 'user#create'
 end
 ````
-### Now lets test the api using insomnia ,but you can use post man or curl
+### Now lets test the api using insomnia ,but you can use post man or Curl command line tool
 Run the server,may the odds be with you lad.
 ````ruby 
 rails s
