@@ -103,7 +103,7 @@ end
 ````
 Lastly, Rails no longer uses config/secrets.yml to hold the secret_key_base that is used for various security features, including generating JWTs with the Knock gem. Rails now uses an encoded file called config/credentials.yml.enc. Add the below line to the Knock configuration file
 ````ruby 
-
+# config/initializers/knock.rb 
 config.token_secret_signature_key = -> { Rails.application.credentials.secret_key_base }
   
 ````
