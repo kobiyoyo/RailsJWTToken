@@ -7,7 +7,10 @@ rails new JWTapp --api -d=postgresql
 ````ruby 
 gem 'rack-cors'
 bundle install
-
+end
+````
+### Uncomment this lines below in cors.rb
+````ruby 
 # config/initializers/cors.rb
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
@@ -34,7 +37,7 @@ rails generate scaffold User username:string email:string password_digest:string
 class User < ApplicationRecord
   has_secure_password
   validates :username, presence: true
-  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, uniqueness: true
 end
 ````
 
@@ -51,7 +54,7 @@ rails db:migrate
 ### Lets create a user
 ````ruby
 rails c
-User.create(username: "Johnny Ramone", email: "johnny@ramones.com", password: "ramones", password_confirmation: "ramones")
+User.create(username: "Daniel Adama", email: "dan@ymail.com", password: "enemona", password_confirmation: "enemona")
 ````
 ### Now lets configure the knock Gem
 ````ruby 
@@ -67,7 +70,7 @@ Read more about zeitwerk [here](https://medium.com/cedarcode/understanding-zeitw
 config.load_defaults 6.0 and config.autoloader = :classic
 ````
 
-By default, Knock will expire the token in 24 hours. If you want to change that then uncomment the line and make the appropriate adjustments:
+By default knock token is set to expire in 24 hours, we can adjust it if we uncomment the line below ,adjust it however we want 
 ````ruby 
 # config/initializers/knock.rb 
 config.token_lifetime = 1.day
@@ -76,7 +79,7 @@ config.token_lifetime = 1.day
 ````ruby 
 rails generate knock:token_controller user
 ````
-This generates a controller called user_token_controller. It inherits from Knock::AuthTokenController which comes with a create action that will create a JWT when a user successfully logs in. The generator also inserts a route in the routes.rb file: post 'user_token' => 'user_token#create' as an API endpoint for the client to call when logging in.
+This generates a controller called user_token_controller. It inherits from Knock::AuthTokenController which comes with a create action that will create a JWT when logged in. The generator also inserts a route in the routes.rb file: post 'user_token' => 'user_token#create' as an API endpoint for login.
 ### Now lets include Knock::Authenticable module in your ApplicationController 
 ````ruby 
 # app/controllers/application_controller.rb 
@@ -84,13 +87,14 @@ class ApplicationController < ActionController::API
   include Knock::Authenticable
 end
 ````
-poooo u almost there friend,Add an authenticate_user before filter to any controller,here am going to first add it to users_controller in order to enable users signup.
+poooo u almost there friend,Add an authenticate_user before filter to any controller to be authenticated,here am going to first add it to users_controller in order to enable users signup.
 ````ruby 
 # app/controllers/user_controller.rb 
 before_action :authenticate_user,except: [:create]
 
 ````
-If you are using Rails 5.2 or higher you need to take two more steps. First, protect_from_forgery is included in ActionController::Base by default now, so you need to skip that in the Knock controller we generated for logging in from our React client. API clients are from a different domain so they won't have the standard Rails authenticity token.
+If you are using Rails 5.2 or higher you need to take two more steps.
+- First,since protect_from_forgery is included in ActionController::Base by default, now you need to skip that in the Knock controller we generated for logging in from our React client. API clients are from a different domain so they won't have the standard Rails authenticity token.
 
 ````ruby 
 # app/controllers/user_token_controller.rb
@@ -98,4 +102,21 @@ class UserTokenController < Knock::AuthTokenController
   skip_before_action :verify_authenticity_token, raise: false
 end  
 ````
-The other change is Rails no longer uses config/secrets.yml to hold the secret_key_base that is used for various security features, including generating JWTs with the Knock gem. Rails now uses an encoded file called config/credentials.yml.enc. Add the below line to the Knock configuration file
+Lastly, Rails no longer uses config/secrets.yml to hold the secret_key_base that is used for various security features, including generating JWTs with the Knock gem. Rails now uses an encoded file called config/credentials.yml.enc. Add the below line to the Knock configuration file
+````ruby 
+
+config.token_secret_signature_key = -> { Rails.application.credentials.secret_key_base }
+  
+````
+Add an api namespace using scopes
+This time let's add an "auth/" scope to all of our api routes. That will add "auth" to the path but not to the controller or model.
+````ruby 
+
+# config/routes.rb 
+scope '/auth/' do
+  post 'signin', to: 'user_token#create'
+  post 'signup', to: 'user#create'
+end
+````
+### Now lets test the api using post man
+
