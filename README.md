@@ -70,7 +70,7 @@ Read more about zeitwerk [here](https://medium.com/cedarcode/understanding-zeitw
 config.load_defaults 6.0 and config.autoloader = :classic
 ````
 
-By default knock token is set to expire in 24 hours, we can adjust it if we uncomment the line below ,adjust it however we want 
+By default knock token is set to expire in 24 hours, we can adjust it if we uncomment the line below ,and adjust it however we want 
 ````ruby 
 # config/initializers/knock.rb 
 config.token_lifetime = 1.day
