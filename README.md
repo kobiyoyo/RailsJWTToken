@@ -66,7 +66,7 @@ rails g knock:install
 ````
 This will create an initializer file at config/initializers/knock.rb that contains the default configuration. 
 
-Note:You might get an error like this `Could not load generator "generators/knock/install_generator"` this caused by zeitwerk that is rails 6 autoloader.we can circumnavigate this error by switching the autoloader.
+Yeah i know you got an  error like this `Could not load generator "generators/knock/install_generator"`,if not skip to the next step(default knock token) this caused by zeitwerk that is rails 6 autoloader.we can circumnavigate this error by switching the autoloader.
 Read more about zeitwerk [here](https://medium.com/cedarcode/understanding-zeitwerk-in-rails-6-f168a9f09a1f) 
 Now we are going to degenerate the knock and generate it once more once we have included the line below into application.rb
 ````ruby 
