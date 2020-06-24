@@ -149,7 +149,7 @@ scope '/auth' do
 end
 ````
 ### Now lets test the api using insomnia ,but you can use post man or Curl command line tool
-Run the server,may the odds be with you lad.
+Run the server,may the odds be on your side
 ````ruby 
 rails s
 ````
