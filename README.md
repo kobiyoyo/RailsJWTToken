@@ -167,7 +167,7 @@ Lastly, Rails no longer uses `config/secrets.yml` to hold the secret_key_base th
 config.token_secret_signature_key = -> { Rails.application.credentials.secret_key_base }
   
 ````
-# Current_user
+## Current_user
 You also have access directly to `current_user` which will try to authenticate or return nil
  ````ruby 
 def index
