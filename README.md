@@ -151,6 +151,17 @@ Lastly, Rails no longer uses config/secrets.yml to hold the secret_key_base that
 config.token_secret_signature_key = -> { Rails.application.credentials.secret_key_base }
   
 ````
+# current_user
+You also have access directly to `current_user` which will try to authenticate or return nil
+ ````ruby 
+def index
+  if current_user
+    # do something
+  else
+    # do something else
+  end
+end
+````
 ### Routes
 Add an api namespace using scopes,This time let's add an "auth/" scope to all of our api routes. That will add "auth" to the path but not to the controller or model.i edited the default route to user_token controller.
 ````ruby 
