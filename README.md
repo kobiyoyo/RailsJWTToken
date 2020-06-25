@@ -31,7 +31,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   end
 end
 ````
-## Password Digest & Knock Gem
+## Bcrypt & Knock Gem
 Bcrypt is a hash algorithm for password hashing and knock which is mainly for JWT authentication.
 ````ruby 
 gem 'bcrypt'
@@ -129,7 +129,7 @@ class ApplicationController < ActionController::API
   include Knock::Authenticable
 end
 ````
-You almost there friend,Add an `authenticate_user` before filter to any controller to be authenticated,here am going to first add it to users_controller in order to enable users sign up.
+You almost there friend,Add an `authenticate_user` before filter to your controllers to be protected,here am going to first add it to users_controller and except the `create` method in order to enable users sign up.
 
 ````ruby 
 # app/controllers/user_controller.rb 
