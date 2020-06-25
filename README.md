@@ -121,9 +121,9 @@ Generate a controller for users to login in through:
 ````ruby 
 rails generate knock:token_controller user
 ````
-This generates a controller called user_token_controller. It inherits from Knock::AuthTokenController which comes with a create action that will create a JWT when logged in.
+This generates a controller called `user_token_controller`. It inherits from `Knock::AuthTokenController` which comes with a create action that will create a JWT when logged in.
 
-Note:user_token_controller.rb is meant for sign in and its different from user_controller.rb.
+Note:`user_token_controller` is meant for sign in and its different from `users_controller`.
 
 ````ruby 
 # app/controllers/user_token_controller.rb
@@ -144,10 +144,10 @@ class ApplicationController < ActionController::API
   include Knock::Authenticable
 end
 ````
-You almost there friend,Add an `authenticate_user` before filter to your controllers to be protected,here am going to first add it to users_controller and except the `create` method in order to enable users sign up.
+You almost there friend,Add an `authenticate_user` before filter to your controllers to be protected,here am going to first add it to `users_controller` and except the `create` method in order to enable users sign up.
 
 ````ruby 
-# app/controllers/user_controller.rb 
+# app/controllers/users_controller.rb 
 before_action :authenticate_user,except: [:create]
 
 ````
@@ -178,7 +178,7 @@ def index
 end
 ````
 ### Routes
-Add an api namespace using scopes,This time let's add an "auth/" scope to all of our api routes. That will add "auth" to the path but not to the controller or model.i edited the default route to user_token controller.
+Add an api namespace using scopes,This time let's add an "auth/" scope to all of our api routes. That will add "auth" to the path but not to the controller or model.i edited the default route to `user_token controller`.
 ````ruby 
 
 # config/routes.rb 
