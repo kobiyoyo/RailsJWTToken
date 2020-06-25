@@ -117,7 +117,7 @@ By default knock token is set to expire in 24 hours, we can adjust it if we unco
 # config/initializers/knock.rb 
 config.token_lifetime = 1.day
 ````
-Generate a controller for users to login in through:
+Generate a controller for users to sign in through:
 
 ````ruby 
 rails generate knock:token_controller user
