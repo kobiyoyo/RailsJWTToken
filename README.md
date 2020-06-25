@@ -47,7 +47,7 @@ Now we are going to create a user using the scaffold generator.
 rails generate scaffold User username:string email:string password_digest:string
 
 ````
-Include this in user model.
+Include this in your user model.
 ````ruby 
 # app/models/user.rb 
 class User < ApplicationRecord
