@@ -137,7 +137,7 @@ The generator also inserts a  route in the routes.rb file as an API endpoint for
 # app/config/routes.rb
 post 'user_token' => 'user_token#create'
 ````
- Now lets include Knock::Authenticable module in your ApplicationController.
+ Now lets `include Knock::Authenticable` module in your ApplicationController.
 ````ruby 
 # app/controllers/application_controller.rb 
 class ApplicationController < ActionController::API
