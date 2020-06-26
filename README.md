@@ -91,7 +91,7 @@ rails c
 User.create(username: "Danny", email: "dan@ymail.com", password: "enemona", password_confirmation: "enemona")
 ````
 ## Knock Configuration
-Now lets configure the knock Gem
+Now let's configure the knock Gem
 ````ruby 
 rails g knock:install
 ````
@@ -104,7 +104,7 @@ Now we are going to degenerate the knock and generate it once more, once we have
 ````ruby 
 rails d knock:install
 ````
- Lets include this in  application.rb file
+ Let's include this in  application.rb file
 ````ruby 
 # config/application.rb 
 config.load_defaults 6.0 and config.autoloader = :classic
@@ -190,7 +190,7 @@ end
 ````
 ## Testing
 Now let's test the API using Insomnia, but you can use Postman or Curl command-line tool.
-Run the server, may the odds be ever in your favour .
+Run the server, may the odds be ever in your favour.
 ````ruby 
 rails s
 ````
@@ -202,4 +202,5 @@ rails s
   }
 }
 ````
-Note:`auth` is  an object containing  the log in form field names and values.
+
+Note:`auth` is an object containing the sign-in form field names and values.
