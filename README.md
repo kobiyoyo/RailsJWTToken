@@ -1,4 +1,4 @@
-### Knock as an authentication solution for Rails API
+# Knock as an authentication solution for Rails API
 ## Background
 Today I am going to give detailed steps on how to get knock gem up and running in your Rails application. The idea for this article stems from the fact that I couldn't find a well-defined and up to date resource on how to implement rails API token authentication. For this tutorial, I will be using the latest version (6.0) of Ruby on Rails.
 
