@@ -1,6 +1,6 @@
 ### RailsJWTToken
 ## Background
-Today I am going to give detailed steps on how to get knock gem up and running in your Rails application. The idea for this article stems from the fact that i couldn't find a well-defined and up to date resource on how to implement rails API token authentication. For this tutorial, I will be using the latest version (6.0) of Ruby on Rails.
+Today I am going to give detailed steps on how to get knock gem up and running in your Rails application. The idea for this article stems from the fact that I couldn't find a well-defined and up to date resource on how to implement rails API token authentication. For this tutorial, I will be using the latest version (6.0) of Ruby on Rails.
 
 ## Setup
 
@@ -19,7 +19,7 @@ Let's uncomment Cors gem to permit access to the API.
 gem 'rack-cors'
 bundle install
 ````
-Uncomment this lines below in cors.rb .
+Uncomment these lines below in cors.rb .
 ````ruby 
 # config/initializers/cors.rb
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
@@ -83,7 +83,7 @@ end
 ````ruby 
 rails db:migrate
 ````
-Lets create a user using rails console
+Lets create a user using the rails console.
 ````ruby
 rails c
 ````
@@ -97,10 +97,10 @@ rails g knock:install
 ````
 This will create an initializer file at `config/initializers/knock.rb` that contains the default configuration. 
 
-Yeah I know you got an error like this `Could not load generator "generators/knock/install_generator"`, if not skip to the next step(default knock token), this is caused by zeitwerk that is rails 6 autoloader.we can circumnavigate this error by switching the autoloader.
+Yeah I know you got an error like this `Could not load generator "generators/knock/install_generator"`, if not skip to the next step(default knock token), this is caused by Zeitwerk that is rails 6 autoloader.we can circumnavigate this error by switching the autoloader.
 
-Read more about zeitwerk [here](https://medium.com/cedarcode/understanding-zeitwerk-in-rails-6-f168a9f09a1f).
-Now we are going to degenerate the knock and generate it once more once we have included the line below into application.rb
+Read more about Zeitwerk [here](https://medium.com/cedarcode/understanding-zeitwerk-in-rails-6-f168a9f09a1f).
+Now we are going to degenerate the knock and generate it once more, once we have included the line below into `application.rb` .
 ````ruby 
 rails d knock:install
 ````
@@ -161,14 +161,14 @@ class UserTokenController < Knock::AuthTokenController
   skip_before_action :verify_authenticity_token, raise: false
 end  
 ````
-Lastly, Rails no longer uses `config/secrets.yml` to hold the secret_key_base that is used for various security features, including generating JWTs with the Knock gem. Rails now uses an encoded file called `config/credentials.yml.enc`. Add the below line to the Knock configuration file
+Lastly, Rails no longer uses `config/secrets.yml` to hold the secret_key_base that is used for various security features, including generating JWTs with the Knock gem. Rails now use an encoded file called `config/credentials.yml.enc`. Add the below line to the Knock configuration file.
 ````ruby 
 # config/initializers/knock.rb 
 config.token_secret_signature_key = -> { Rails.application.credentials.secret_key_base }
   
 ````
 ## Current_user
-You also have access directly to `current_user` which will try to authenticate or return nil
+You also have access directly to `current_user` which will try to authenticate.
  ````ruby 
 def index
   if current_user
@@ -179,7 +179,7 @@ def index
 end
 ````
 ### Routes
-Add an api namespace using scopes,This time let's add an "auth/" scope to all of our api routes. That will add "auth" to the path but not to the controller or model.i edited the default route to `user_token controller`.
+Add an API namespace using scopes, This time let's add an "auth/" scope to all of our API routes. That will add "auth" to the path but not to the controller or model. I edited the default route to `user_token controller`.
 ````ruby 
 
 # config/routes.rb 
