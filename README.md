@@ -202,4 +202,4 @@ rails s
   }
 }
 ````
-Note:`auth` is  an object containing the the log in form field names and values.
+Note:`auth` is  an object containing  the log in form field names and values.
