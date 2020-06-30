@@ -184,14 +184,14 @@ The sign in details should be wrapped in auth, because it contains the sign-in f
 }
 ````
 <p align="center">
-  <img src="app/assets/images/screenshot.png" alt="facebook-project">
+  <img src="docs/article.png" alt="facebook-project">
 </p>
 
 ### Bonus
 Let's create a user through the sign-up endpoint.
 
 <p align="center">
-  <img src="app/assets/images/screenshot.png" alt="facebook-project">
+  <img src="docs/scr1.png" alt="facebook-project">
 </p>
 Please visit my GitHub repository for the source code:
 https://github.com/kobiyoyo/RailsJWTToken
