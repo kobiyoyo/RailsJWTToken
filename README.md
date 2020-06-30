@@ -193,9 +193,9 @@ Let's create a user through the sign-up endpoint.
 <p align="center">
   <img src="docs/scr1.png" alt="facebook-project">
 </p>
-Please visit my GitHub repository for the source code:
-https://github.com/kobiyoyo/RailsJWTToken
+
 Thank you for reading. For more information regarding the resources implemented in this guide, please refer to:
+
 https://github.com/nsarno/knock
 
 Contact Information
