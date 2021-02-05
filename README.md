@@ -5,7 +5,7 @@ Today I am going to give you detailed steps on how to get knock gem up and runni
 ### Setup
 First thing first let's generate a new Rails app:
 ````ruby 
-$ rails new JWTapp - api -d=postgresql -T
+$ rails new JWTapp --api -d=postgresql -T
 $ cd JWTapp
 $ rails db:create
 $ rails db:migrate
